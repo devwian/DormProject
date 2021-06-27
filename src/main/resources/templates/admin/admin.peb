@@ -1,0 +1,51 @@
+    {% extends "_base.peb" %}
+    {% block main %}
+        {% if user!=null %}
+        <h4 class="display-4">您好，管理员{{ user.adminName }}</h4>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">学生信息管理</h5>
+                        <p class="card-text">可以查询修改以及登记学生的信息</p>
+                        <a href="/admin/managestuinfo" class="btn btn-primary">现在就去！</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">宿舍信息管理</h5>
+                        <p class="card-text">可以查询修改宿舍的信息</p>
+                        <a href="/admin/managedorminfo" class="btn btn-primary">现在就去！</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <br>
+            <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">住宿信息管理</h5>
+                        <p class="card-text">可以查询修改以及登记学生住宿的信息</p>
+                        <a href="/admin/student-dorm" class="btn btn-primary">现在就去！</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">财产信息管理</h5>
+                        <p class="card-text">可以管理学生的财产信息</p>
+                        <a href="/admin/property" class="btn btn-primary">现在就去！</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%else%}
+        <h3>unknown</h3>
+        {% endif %}
+    {% endblock %}
+

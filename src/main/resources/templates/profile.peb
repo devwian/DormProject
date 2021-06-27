@@ -1,0 +1,14 @@
+    {% extends "/_base.peb" %}
+
+    {% block main %}
+    <h3>个人主页</h3>
+    {% if Type=="student" %}
+    <p>学号: {{ user.studentId }}</p>
+    <p>姓名: {{ user.studentName }}</p>
+    <p>宿舍：{{ dorm }}</p>
+    <p>注册时间: {{ user.date }}</p>
+    {%elseif Type=="admin" %}
+    <p>工号: {{ user.adminId }}</p>
+    <p>姓名: {{ user.adminName }}</p>
+    {% endif %}
+    {% endblock %}

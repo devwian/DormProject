@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver #121.196.174.197
+    url: jdbc:mysql://121.196.174.197:3306/dorm?setUnicode=true&characterEncoding=utf8&useAffectedRows=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 1841993720
+server:
+  port: 8080
+mybatis:
+  type-aliases-package: com.devwian.dormproject.entity
+  mapper-locations: classpath:mapper/*.xml
+pebble:
+  suffix:
+  cache: false

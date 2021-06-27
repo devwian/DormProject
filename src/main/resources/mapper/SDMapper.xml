@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.devwian.dormproject.mapper.SDMapper">
+    <insert id="addSD" parameterType="com.devwian.dormproject.entity.SD">
+        insert into SD(studentId, dormId)
+        values (#{studentId},#{dormId})
+    </insert>
+    <update id="editSD">
+        update SD
+        <set>
+            studentId = #{studentId},dormID = #{dormId},
+            <if test="leader !=null">
+            leader = #{leader}
+            </if>
+        </set>
+        where studentId = #{studentId}
+    </update>
+    <delete id="delSD">
+        delete from SD where studentId = #{studentId}
+    </delete>
+    <select id="getSDByDormId" resultType="com.devwian.dormproject.entity.SD" parameterType="java.lang.String">
+        select *
+        from SD
+        where dormId = #{dormId}
+    </select>
+    <select id="queryAll" resultType="com.devwian.dormproject.entity.SD">
+        select *
+        from SD
+    </select>
+    <select id="getDormPeople" resultType="java.lang.Integer">
+        select COUNT(*) from SD where dormId = #{dormId}
+    </select>
+    <select id="getDormId" resultType="java.lang.String">
+        select dormId from SD where studentId = #{studentId}
+    </select>
+</mapper>

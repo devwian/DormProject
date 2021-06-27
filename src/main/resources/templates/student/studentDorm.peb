@@ -1,0 +1,6 @@
+    {% extends "../_base.peb" %}
+    {% block main %}
+        <table id="table"></table>
+
+        <script src="/js/mydorm.js"></script>
+    {% endblock %}

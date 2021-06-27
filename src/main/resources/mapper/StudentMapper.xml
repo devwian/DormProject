@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.devwian.dormproject.mapper.StudentMapper">
+
+    <resultMap id="student" type="com.devwian.dormproject.entity.Student">
+        <result column="studentId" property="studentId"/>
+        <result column="studentName" property="studentName"/>
+        <result column="studentPassword" property="studentPassword"/>
+        <result column="studentTel" property="studentTel"/>
+        <result column="date" property="date"/>
+    </resultMap>
+    <insert id="addStudent" parameterType="com.devwian.dormproject.entity.Student">
+        insert into studentInfo (studentID, studentName, studentPassword, studentTel, date)
+         VALUES (#{studentId}, #{studentName},#{studentPassword}, #{studentTel}, #{date})
+    </insert>
+
+    <update id="editStudent">
+        update studentInfo
+        set studentName = #{studentName},studentTel = #{studentTel}
+        where studentId = #{studentId}
+    </update>
+
+    <delete id="delStudent">
+       delete from studentInfo where studentId = #{studentId}
+    </delete>
+
+    <select id="getStudentById" resultType="com.devwian.dormproject.entity.Student">
+        select *
+        from studentInfo
+        where studentId = #{studentId}
+    </select>
+
+    <select id="queryAll" resultMap="student">
+        select *
+        from studentInfo
+    </select>
+
+</mapper>

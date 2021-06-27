@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devwian.dormproject.mapper.DormMapper">
+  <resultMap id="BaseResultMap" type="com.devwian.dormproject.entity.Dorm">
+    <id column="dormId" jdbcType="VARCHAR" property="dormId" />
+    <result column="dormNum" jdbcType="INTEGER" property="dormNum" />
+    <result column="dormTel" jdbcType="CHAR" property="dormTel" />
+    <result column="className" jdbcType="VARCHAR" property="className" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from dormInfo
+    where dormId = #{dormId,jdbcType=VARCHAR}
+  </select>
+  <select id="queryAll" resultMap="BaseResultMap">
+    select * from dormInfo
+  </select>
+  <select id="getDormNum" resultType="java.lang.Integer">
+    select dormNum from dormInfo where dormId = #{dormId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dormInfo
+    where dormId = #{dormId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="dormId" keyProperty="dormId" parameterType="com.devwian.dormproject.entity.Dorm" useGeneratedKeys="true">
+    insert into dormInfo (dormId,dormNum, dormTel, className)
+    values (#{dormId},#{dormNum,jdbcType=INTEGER}, #{dormTel,jdbcType=CHAR}, #{className,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="dormId" keyProperty="dormId" parameterType="com.devwian.dormproject.entity.Dorm" useGeneratedKeys="true">
+    insert into dormInfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dormNum != null">
+        dormNum,
+      </if>
+      <if test="dormTel != null">
+        dormTel,
+      </if>
+      <if test="className != null">
+        className,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dormNum != null">
+        #{dormNum,jdbcType=INTEGER},
+      </if>
+      <if test="dormTel != null">
+        #{dormTel,jdbcType=CHAR},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devwian.dormproject.entity.Dorm">
+    update dormInfo
+    <set>
+      <if test="dormNum != null">
+        dormNum = #{dormNum,jdbcType=INTEGER},
+      </if>
+      <if test="dormTel != null">
+        dormTel = #{dormTel,jdbcType=CHAR},
+      </if>
+      <if test="className != null">
+        className = #{className,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dormId = #{dormId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devwian.dormproject.entity.Dorm">
+    update dormInfo
+    set dormNum = #{dormNum,jdbcType=INTEGER},
+      dormTel = #{dormTel,jdbcType=CHAR},
+      className = #{className,jdbcType=VARCHAR}
+    where dormId = #{dormId,jdbcType=VARCHAR}
+  </update>
+</mapper>

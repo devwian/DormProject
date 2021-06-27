@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.devwian.dormproject.mapper.PropertyMapper">
+
+    <insert id="insert" parameterType="com.devwian.dormproject.entity.Property">
+        insert into property(propertyId, propertyName,dormId)
+        values (#{propertyId},#{propertyName},#{dormId})
+    </insert>
+    <update id="updateProperty">
+        update property
+        set propertyId = #{propertyId},
+            propertyName = #{propertyName},
+            dormId = #{dormId}
+        where propertyId = #{propertyId}
+    </update>
+
+    <delete id="delPropertyById">
+        delete from property
+        where PropertyId = #{propertyId}
+    </delete>
+
+    <select id="queryProperty" resultType="com.devwian.dormproject.entity.Property">
+        select * from property
+    </select>
+    <select id="studentGetProperty" resultType="com.devwian.dormproject.entity.Property"
+            parameterType="java.lang.String">
+        select * from property where dormId=#{dormId}
+    </select>
+    <select id="getPropertyById" resultType="com.devwian.dormproject.entity.Property"
+            parameterType="java.lang.String">
+        select * from property where PropertyId=#{propertyId}
+    </select>
+</mapper>

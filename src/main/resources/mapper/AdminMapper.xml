@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devwian.dormproject.mapper.AdminMapper">
+    <insert id="insertInto" parameterType="com.devwian.dormproject.entity.Admin">
+        insert adminInfo(adminId, adminTel, adminName, adminPassword, registerAt)
+        values (#{adminId}, #{adminTel}, #{adminName}, #{adminPassword}, #{registerAt})
+    </insert>
+
+    <select id="getAdminById" resultType="com.devwian.dormproject.entity.Admin">
+        select *
+        from adminInfo
+        where adminId = #{id}
+    </select>
+
+</mapper>

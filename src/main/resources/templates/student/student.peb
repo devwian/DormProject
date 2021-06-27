@@ -1,0 +1,51 @@
+{% extends "/_base.peb" %}
+{% block main %}
+    {% if student!=null or user!=null%}
+    <h4 class="display-4">您好{{ student.studentName }}</h4>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">宿舍信息管理</h5>
+                    <p class="card-text">可以查询宿舍信息</p>
+                    <a href="/student/mydorm" class="btn btn-primary">现在就去！</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">查询其他宿舍信息</h5>
+                    <p class="card-text">可以查询其他宿舍的信息</p>
+                    <a href="/admin/managedorminfo" class="btn btn-primary">现在就去！</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">宿舍财产信息管理</h5>
+                    <p class="card-text">可以查询修改以及登记宿舍财产的信息</p>
+                    <a href="/student/property" class="btn btn-primary">现在就去！</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">还没想好管理</h5>
+                    <p class="card-text">可以放置留言！</p>
+                    <a href="#" class="btn btn-primary">但是还没做好！</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%else%}
+    <h3>未登录用户</h3>
+    {% endif %}
+{% endblock %}
+    
